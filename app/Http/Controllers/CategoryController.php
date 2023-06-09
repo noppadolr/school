@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
    public function AllCat(){
-    return \view('admin.category.index');
+    // $categories=Category::all();
+    $categories=Category::latest()->get(); //เรียงจากล่าสุดไป
+    return \view('admin.category.index',compact('categories'));
 
    }
    //End AllCat method
@@ -29,11 +31,11 @@ class CategoryController extends Controller
             'category_name.max' => 'Categories must not exceed 50 characters',
         ],
     );
-    // Category::insert([
-    //     'category_name'=>$request->category_name,
-    //     'user_id'=>Auth::user()->id,
-    //     'created_at'=>Carbon::now()
-    // ]);
+    Category::insert([
+        'category_name'=>$request->category_name,
+        'user_id'=>Auth::user()->id,
+        'created_at'=>Carbon::now()
+    ]);
 
 
     // $category = new Category;
@@ -43,11 +45,11 @@ class CategoryController extends Controller
     // $category->save();// แบบนี้มันจะใส่วันที่ update ให้ด้วยครับ 19. Eloquent ORM Insert Data
 
 
-    $data = array();
-    $data['category_name'] = $request->category_name;
-    $data['user_id'] = Auth::user()->id;
-    $data['created_at']=Carbon::now();
-    DB::table('categories')->insert($data);
+    // $data = array();
+    // $data['category_name'] = $request->category_name;
+    // $data['user_id'] = Auth::user()->id;
+    // $data['created_at']=Carbon::now();
+    // DB::table('categories')->insert($data);
     //Query Builder
 
     return Redirect()->back()->with('success','Category Insertes Successfull');
