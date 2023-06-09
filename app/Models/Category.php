@@ -15,4 +15,9 @@ class Category extends Model
     //     'category_name',
 
     // ];
+    public function user(){
+        return $this->hasone(User::class,'id','user_id');
+
+    }
+    //end user function
 }
