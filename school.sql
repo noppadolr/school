@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2023 at 12:18 PM
+-- Generation Time: Jun 09, 2023 at 12:07 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -35,7 +35,26 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `user_id`, `category_name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Sea Fish', '2023-06-08 04:44:30', NULL, NULL),
+(2, 1, 'Pock', '2023-06-08 04:45:52', NULL, NULL),
+(3, 1, 'Women', '2023-06-08 04:47:16', NULL, NULL),
+(4, 1, 'Man Items', '2023-06-08 04:47:25', NULL, NULL),
+(5, 1, 'Fish', '2023-06-08 04:51:48', '2023-06-08 04:51:48', NULL),
+(6, 1, 'Man Fashion', '2023-06-08 05:00:59', NULL, NULL),
+(7, 1, 'hello', '2023-06-08 05:02:01', NULL, NULL),
+(8, 1, 'test', '2023-06-08 20:30:13', '2023-06-08 20:30:13', NULL),
+(9, 1, 'Query Builder', NULL, NULL, NULL),
+(10, 1, 'Query Builder1', '2023-06-08 21:27:25', NULL, NULL),
+(11, 1, 'test1', '2023-06-08 21:29:01', NULL, NULL),
+(12, 1, 'test2', '2023-06-09 00:46:48', NULL, NULL),
+(13, 3, 'chang', '2023-06-09 03:04:34', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -139,7 +158,9 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('RO5w191qaZBP3KvRbDs2WJd3LzQsq04AGdeMPELl', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiOFBtUWdhaXBNR2ZKcDQxNlA4OUNuUGo3aU56bUZhZ3UxOEpzYWhsMyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yeS9hbGwiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJEhBNjBkVVpnMEJFR2FZNVpOczllSHVaNzNvVFduUGtNNVlPYjJuN1N6TDdISkhRM2ZseW9XIjt9', 1686132904);
+('gQdLAvBOSGgv04hHi7HoGd2XB5T8TjMLctzCfhpo', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiQWloODZSQ3l1Wmg3YWUwWnZ0Q0ZOd3NzbTdpUUY1eFhxODJjWmpwWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yeS9hbGwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJEhBNjBkVVpnMEJFR2FZNVpOczllSHVaNzNvVFduUGtNNVlPYjJuN1N6TDdISkhRM2ZseW9XIjt9', 1686284942),
+('gvTkKXcsV3oLrHItFcbaeU0Rquq3LeNwhUuZdDIJ', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidG01ZUNCdWpVWjJ1OGxzUTRXRWFuTE0wRENUNGNHU29rOXlSZVE3eCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yeS9hbGwiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJHM0VTRsZHVNVG1vWm92MnJEejV1VU9nZEhQQU1UUnY4NnpMMnIyQmcxcUtsL2tHaTdHWk5PIjt9', 1686305074),
+('kSY0Tj6eVAUa54RPonjwpVVDw1x3hM26qk4ZGzh1', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTG9GcXJ4ekJ2NUlDTDdWZFdkeEFYQ2tVTmdmVlJzaW9CY2lzcHdXSSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yeS9hbGwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJEhBNjBkVVpnMEJFR2FZNVpOczllSHVaNzNvVFduUGtNNVlPYjJuN1N6TDdISkhRM2ZseW9XIjt9', 1686225721);
 
 -- --------------------------------------------------------
 
