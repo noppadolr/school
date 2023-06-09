@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
    public function AllCat(){
-    // $categories=Category::all();
-    $categories=Category::latest()->get(); //เรียงจากล่าสุดไป
+    // $categories=Category::all(); //เรียกทั้งหมดมา
+    // $categories=Category::latest()->get(); //เรียงจากล่าสุดไป
+    $categories=DB::table('categories')->latest()->get();//Query Builder
     return \view('admin.category.index',compact('categories'));
 
    }
