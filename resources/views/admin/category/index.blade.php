@@ -74,16 +74,16 @@
                             <div class="card-header">Add Category</div>
                             <div class="card-body">
 
-                                <form action="{{ route('store.category') }}" method="POST">
+                                <form action="{{ route('store.category') }}" method="POST" >
                                     @csrf
                                     <div class="form-group">
                                     <label for="exampleInputEmail1">Category Name</label>
                                     <input type="text" class="form-control" name="category_name" id="category_name" aria-describedby="emailHelp">
-
-                                    </div>
                                         @error('category_name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                    </div>
+
                                     <button type="submit" class="btn btn-primary">Add Category</button>
                                 </form>
                             </div>
