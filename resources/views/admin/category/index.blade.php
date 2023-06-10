@@ -139,8 +139,8 @@
                                     {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}</td>
                                     {{--  ใช้Query Builder  --}}
                                     @endif
-                                <td><a href="{{ url('category/edit/'.$category->id) }}" class="btn btn-info">Edit</a></td>
-                                <td><a href="" class="btn btn-danger">Delete</a></td>
+                                <td><a href="{{ url('category/restore/'.$category->id) }}" class="btn btn-info">Restore</a></td>
+                                <td><a href="{{ url('pdelete/category/'.$category->id) }}" class="btn btn-danger">P Delete</a></td>
                             </tr>
                             @endforeach
 

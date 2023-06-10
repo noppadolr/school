@@ -115,14 +115,28 @@ public function SoftDelete($id){
     $delete = Category::find($id)->delete();
 
     // Category::find($id)->delete();
-    return Redirect()->back()->with('success','Category Deleted Successfull');
-  
+    return Redirect()->route('all.category')->with('success','Category Soft Deleted Successfull');
+
 
 
 }
 //End SoftDelete Method
 
+public function Restore($id){
+    $delete = Category::withTrashed()->find($id)->restore();
+    return Redirect()->back()->with('success','Category Restore Successfull');
+}
+//End Restore Method
 
+
+public function Pdelete($id){
+
+    $delete = Category::onlyTrashed()->find($id)->forceDelete();
+    return Redirect()->back()->with('success','Category Permanent Deleted Successfull');
+
+
+}
+//End Pdelete method
 
 
 
