@@ -77,20 +77,34 @@ class CategoryController extends Controller
    //End AddCat method
 
 public function Edit($id){
-    $categories = Category::find($id);
+    //Eloquent ORM Edit data
+    // $categories = Category::find($id);
+
+    //User Query Builder for edit
+    $categories =DB::table('categories')->where('id',$id)->first();
+
     return \view('admin.category.edit',compact('categories'));
 
 }
 //End Edit method
 
 public function Update(Request $request,$id){
+    //Eloquent ORM Update data
+    // $update = Category::find($id)->update([
+    //     'category_name'=> $request->category_name,
+    //     'update_user_id'=>Auth::user()->id,
+    //     'updated_at'=>Carbon::now()
 
-    $update = Category::find($id)->update([
-        'category_name'=> $request->category_name,
-        'update_user_id'=>Auth::user()->id,
-        'updated_at'=>Carbon::now()
+    // ]);
 
-    ]);
+    //User Query Builder for update
+    $data=array();
+    $data['category_name'] = $request->category_name;
+    $data['update_user_id'] = Auth::user()->id;
+    $data['updated_at'] = Carbon::now();
+    DB::table('categories')->where('id',$id)->update($data);
+
+
     return Redirect()->route('all.category')->with('success','Category Updated Successfull');
 }
 //End Update method
