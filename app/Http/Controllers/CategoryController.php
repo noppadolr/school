@@ -13,13 +13,15 @@ class CategoryController extends Controller
 {
    public function AllCat(){
     //one to one relation with query builder
-    $categories=DB::table('categories')
-                    ->join('users','categories.user_id','users.id')
-                    ->select('categories.*','users.name')->latest()->paginate(10);
+    // $categories=DB::table('categories')
+    //                 ->join('users','categories.user_id','users.id')
+    //                 ->select('categories.*','users.name')->latest()->paginate(10);
 
     // $categories=Category::all(); //เรียกทั้งหมดมา
     // $categories=Category::latest()->get();
-    // $categories=Category::latest()->paginate(5);
+
+    //loquent ORM
+    $categories=Category::latest()->paginate(5);
 
     // $categories=Category::latest()->paginate(5);
     //เรียงจากล่าสุดไป
@@ -73,6 +75,27 @@ class CategoryController extends Controller
 
    }
    //End AddCat method
+
+public function Edit($id){
+    $categories = Category::find($id);
+    return \view('admin.category.edit',compact('categories'));
+
+}
+//End Edit method
+
+public function Update(Request $request,$id){
+
+    $update = Category::find($id)->update([
+        'category_name'=> $request->category_name,
+        'update_user_id'=>Auth::user()->id,
+        'updated_at'=>Carbon::now()
+
+    ]);
+    return Redirect()->route('all.category')->with('success','Category Updated Successfull');
+}
+//End Update method
+
+
 
 
 

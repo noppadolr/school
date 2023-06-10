@@ -16,10 +16,10 @@ class Category extends Model
 
     // ];
     //กรณีใช้ eroquent
-    // public function user(){
-    //     return $this->hasone(User::class,'id','user_id');
+    public function user(){
+        return $this->hasone(User::class,'id','user_id');
 
-    // }
+    }
 
     //end user function
 }
