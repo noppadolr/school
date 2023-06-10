@@ -22,6 +22,7 @@ class CategoryController extends Controller
 
     //loquent ORM
     $categories=Category::latest()->paginate(5);
+    $trachCat=Category::onlyTrashed()->latest()->paginate(3);
 
     // $categories=Category::latest()->paginate(5);
     //เรียงจากล่าสุดไป
@@ -32,7 +33,7 @@ class CategoryController extends Controller
 
 
 
-    return \view('admin.category.index',compact('categories'));
+    return \view('admin.category.index',compact('categories','trachCat'));
 
    }
    //End AllCat method
@@ -108,6 +109,16 @@ public function Update(Request $request,$id){
     return Redirect()->route('all.category')->with('success','Category Updated Successfull');
 }
 //End Update method
+
+public function SoftDelete($id){
+    $delete = Category::find($id)->delete();
+
+    // Category::find($id)->delete();
+    return Redirect()->back()->with('success','Category Deleted Successfull');
+
+
+}
+//End SoftDelete Method
 
 
 
