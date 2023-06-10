@@ -56,7 +56,7 @@
                                             {{--  ใช้Query Builder  --}}
                                             @endif
                                         <td><a href="{{ url('category/edit/'.$category->id) }}" class="btn btn-info">Edit</a></td>
-                                        <td><a href="{{ url('') }}" class="btn btn-danger">Delete</a></td>
+                                        <td><a href="{{ url('softdelete/category/'.$category->id) }}" class="btn btn-danger">Delete</a></td>
                                     </tr>
                                     @endforeach
 
@@ -140,7 +140,7 @@
                                     {{--  ใช้Query Builder  --}}
                                     @endif
                                 <td><a href="{{ url('category/edit/'.$category->id) }}" class="btn btn-info">Edit</a></td>
-                                <td><a href="{{ url('softdelete/category/'.$category->id) }}" class="btn btn-danger">Delete</a></td>
+                                <td><a href="" class="btn btn-danger">Delete</a></td>
                             </tr>
                             @endforeach
 

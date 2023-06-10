@@ -111,10 +111,12 @@ public function Update(Request $request,$id){
 //End Update method
 
 public function SoftDelete($id){
+
     $delete = Category::find($id)->delete();
 
     // Category::find($id)->delete();
     return Redirect()->back()->with('success','Category Deleted Successfull');
+  
 
 
 }
