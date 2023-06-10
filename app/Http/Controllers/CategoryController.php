@@ -12,13 +12,24 @@ use Illuminate\Support\Facades\DB;
 class CategoryController extends Controller
 {
    public function AllCat(){
+    //one to one relation with query builder
+    $categories=DB::table('categories')
+                    ->join('users','categories.user_id','users.id')
+                    ->select('categories.*','users.name')->latest()->paginate(10);
+
     // $categories=Category::all(); //เรียกทั้งหมดมา
     // $categories=Category::latest()->get();
-    $categories=Category::latest()->paginate(5);
+    // $categories=Category::latest()->paginate(5);
 
     // $categories=Category::latest()->paginate(5);
     //เรียงจากล่าสุดไป
-    // $categories=DB::table('categories')->latest()->paginate(5);//Query Builder
+
+
+       //Query Builder
+    // $categories=DB::table('categories')->latest()->paginate(5);
+
+
+
     return \view('admin.category.index',compact('categories'));
 
    }
