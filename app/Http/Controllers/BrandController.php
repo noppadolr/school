@@ -28,8 +28,8 @@ class BrandController extends Controller
         [
             'brand_name.required' => 'Please enter a brand name',
             'brand_name.min' => 'Brand Longer than 5 characters',
-            'brand_image.required'=>'Please enter a brand Image',
-            'brand_image.mimes'=>'The brand image must be a file of type jpg,jpeg,png'
+            'brand_image.required'=>'Please Choose a brand Image',
+
         ]
 
     );
