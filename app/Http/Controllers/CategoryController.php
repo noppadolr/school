@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
+
 class CategoryController extends Controller
 {
    public function AllCat(){

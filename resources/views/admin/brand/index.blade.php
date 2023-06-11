@@ -43,7 +43,8 @@
                                         <td>{{ $brand->brand_name }}</td>
 
                                         <td>
-                                            <img src="" alt="">
+                                            <img src="{{ asset($brand->brand_image) }}" style="height:50px;width: 70px
+                                            ">
 
                                         </td>
 

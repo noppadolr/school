@@ -33,13 +33,33 @@ class BrandController extends Controller
         ]
 
     );
+    $brand_image = $request->file('brand_image');
+
+    $name_gen= hexdec(uniqid());
+    $img_ext = strtolower($brand_image->getClientOriginalExtension());
+    $img_name = $name_gen.'.'.$img_ext;
+    $up_location = 'upload/images/brand/';
+    $last_img = $up_location.$img_name;
+    $brand_image->move($up_location,$img_name);
+
+   Brand::insert([
+    'brand_name'=> $request->brand_name,
+    'brand_image'=> $last_img,
+    'created_at'=>Carbon::now()
+
+   ]);
+   return redirect()->back()->with('success', 'Brand Inserted Successfully');
 
 
    }
    //End StoreBrand Method
 
+   public function Edit($id){
+    $brands = Brand::find($id);
+    return view('admin.brands.brand_edit',compact('brands'));
 
-
+   }
+   //End Edit Method
 
 
 

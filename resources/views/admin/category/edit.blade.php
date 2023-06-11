@@ -24,13 +24,12 @@
                                             name="category_name"
                                             id="category_name"
                                             aria-describedby="emailHelp"
-                                            value="{{ $categories->category_name }}"
-                                            >
-
-                                    </div>
+                                            value="{{ $categories->category_name }}">
                                         @error('category_name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                    </div>
+
                                     <button type="submit" class="btn btn-primary">Update Category</button>
                                 </form>
                             </div>
