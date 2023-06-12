@@ -108,13 +108,25 @@ class BrandController extends Controller
                     return redirect()->back()->with('success', 'Brand Updated Successfully');
 
             }
+   }
+   //End Update Method
+
+   public function Delete($id){
 
 
+    //ลบรูปก่อน
+    $image = Brand::find($id);
+    $old_image = $image->brand_image;
+    unlink($old_image);
 
+    //ลบในฐานข้อมูล
+    
+    Brand::find($id)->delete();
+    return redirect()->back()->with('success', 'Brand Deleted Successfully');
 
 
    }
-   //End Update Method
+   //End BrandDelete method
 
 
 

@@ -57,7 +57,7 @@
                                             {{--  ใช้Query Builder  --}}
                                             @endif
                                         <td><a href="{{ url('brand/edit/'.$brand->id) }}" class="btn btn-info">Edit</a></td>
-                                        <td><a href="{{ url('brand/delete/'.$brand->id) }}" class="btn btn-danger">Delete</a></td>
+                                        <td><a href="{{ url('brand/delete/'.$brand->id) }}"  onclick="return confirm('Are you sure to Delete ?')" class="btn btn-danger" >Delete</a></td>
                                     </tr>
                                     @endforeach
 
