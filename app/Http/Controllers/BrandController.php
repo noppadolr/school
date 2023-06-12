@@ -7,6 +7,7 @@ use App\Models\Brand;
 use Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Image;
 
 class BrandController extends Controller
 {
@@ -35,12 +36,19 @@ class BrandController extends Controller
     );
     $brand_image = $request->file('brand_image');
 
-    $name_gen= hexdec(uniqid());
-    $img_ext = strtolower($brand_image->getClientOriginalExtension());
-    $img_name = $name_gen.'.'.$img_ext;
-    $up_location = 'upload/images/brand/';
-    $last_img = $up_location.$img_name;
-    $brand_image->move($up_location,$img_name);
+    // แบบปกติ
+    // $name_gen= hexdec(uniqid());
+    // $img_ext = strtolower($brand_image->getClientOriginalExtension());
+    // $img_name = $name_gen.'.'.$img_ext;
+    // $up_location = 'upload/images/brand/';
+    // $last_img = $up_location.$img_name;
+    // $brand_image->move($up_location,$img_name);
+
+    //ใช้ Image Intervention
+    $name_gen= hexdec(uniqid()).'.'.$brand_image->getClientOriginalExtension();
+    Image::make($brand_image)->resize(300,200)->save('upload/images/brand/'.$name_gen);
+    $last_img ='upload/images/brand/'.$name_gen;
+
 
    Brand::insert([
     'brand_name'=> $request->brand_name,
@@ -120,7 +128,7 @@ class BrandController extends Controller
     unlink($old_image);
 
     //ลบในฐานข้อมูล
-    
+
     Brand::find($id)->delete();
     return redirect()->back()->with('success', 'Brand Deleted Successfully');
 
