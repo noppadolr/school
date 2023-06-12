@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Image;
+use App\Models\MultiPic;
 
 class BrandController extends Controller
 {
@@ -135,6 +136,53 @@ class BrandController extends Controller
 
    }
    //End BrandDelete method
+
+   /// This for All MutiImage methods
+   public function MultiPic() {
+
+    $images = Multipic::all();
+    return \view('admin.multipic.index',compact('images'));
+    }
+    //End MultiPic method
+
+    public function StoreImg(Request $request){
+
+
+        $validatedData = $request->validate
+        (
+
+           [ 'image.*' => ['nullable','mimes:jpg,png,jpeg']],
+
+
+        );
+
+        $image = $request->file('image');
+
+        foreach($image as $multi_img){
+        $name_gen= hexdec(uniqid()).'.'.$multi_img->getClientOriginalExtension();
+        Image::make($multi_img)->resize(300,200)->save('upload/images/multi/'.$name_gen);
+        $last_img ='upload/images/multi/'.$name_gen;
+
+
+        MultiPic::insert([
+
+        'image'=> $last_img,
+        'created_at'=>Carbon::now()
+
+       ]);
+        }
+        //end foreach
+       return redirect()->back();
+
+
+
+
+
+
+
+
+    }
+    //End StoreImg method
 
 
 
